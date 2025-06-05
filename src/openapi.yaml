@@ -45,22 +45,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
-    put:
-      tags: [Todos]
-      summary: Update a todo
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todo'
-      responses:
-        '200':
-          description: Updated todo
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
   /todos/task/{id}:
     get:
       tags: [Todos]
@@ -81,6 +65,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Todo'
   /todos/{id}:
+    put:
+      tags: [Todos]
+      summary: Update a todo
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Updated todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
     delete:
       tags: [Todos]
       summary: Delete a todo
@@ -123,22 +129,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
-    put:
-      tags: [Tasks]
-      summary: Update a task
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Task'
-      responses:
-        '200':
-          description: Updated task
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Task'
   /tasks/project/{id}:
     get:
       tags: [Tasks]
@@ -159,6 +149,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Task'
   /tasks/{id}:
+    put:
+      tags: [Tasks]
+      summary: Update a task
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: Updated task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
     delete:
       tags: [Tasks]
       summary: Delete a task
@@ -201,9 +213,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
+  /projects/{id}:
     put:
       tags: [Projects]
       summary: Update a project
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
       requestBody:
         required: true
         content:
@@ -217,16 +236,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
-  /projects/{id}:
     delete:
       tags: [Projects]
       summary: Delete a project
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         '204':
           description: Project deleted
