@@ -1,11 +1,20 @@
+const parse = require("pg-connection-string").parse;
+
 require('dotenv').config();
 
 const isProduction = process.env.NODE_ENV === 'production';
-
+let connectionConfig = {};
+if(isProduction){
+	connectionConfig = parse(process.env.DATABASE_URL);
+	connectionConfig.ssl = {
+		require: true,
+		rejectUnauthorized: false,
+	};
+}
 const knexConfig = isProduction
   ? {
       client: 'pg',
-      connection: process.env.DATABASE_URL,
+      connection: connectionConfig,
       pool: { min: 1, max: 1 },
     }
   : {
