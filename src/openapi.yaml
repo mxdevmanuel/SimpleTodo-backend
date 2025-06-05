@@ -1,0 +1,277 @@
+openapi: 3.1.0
+info:
+  title: Todo API
+  version: 1.0.0
+  description: API for managing todos, tasks, and projects
+
+servers:
+  - url: http://localhost:3000
+
+tags:
+  - name: Todos
+    description: Operations related to todos
+  - name: Tasks
+    description: Operations related to tasks
+  - name: Projects
+    description: Operations related to projects
+
+paths:
+  /todos:
+    get:
+      tags: [Todos]
+      summary: List all todos
+      responses:
+        '200':
+          description: List of todos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    post:
+      tags: [Todos]
+      summary: Create a new todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '201':
+          description: Created todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+    put:
+      tags: [Todos]
+      summary: Update a todo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Updated todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+  /todos/task/{id}:
+    get:
+      tags: [Todos]
+      summary: List todos by parent/project
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: List of todos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+  /todos/{id}:
+    delete:
+      tags: [Todos]
+      summary: Delete a todo
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '204':
+          description: Todo deleted
+
+  /tasks:
+    get:
+      tags: [Tasks]
+      summary: List all tasks
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      tags: [Tasks]
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Created task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+    put:
+      tags: [Tasks]
+      summary: Update a task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: Updated task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /tasks/project/{id}:
+    get:
+      tags: [Tasks]
+      summary: List tasks by project
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+  /tasks/{id}:
+    delete:
+      tags: [Tasks]
+      summary: Delete a task
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '204':
+          description: Task deleted
+
+  /projects:
+    get:
+      tags: [Projects]
+      summary: List all projects
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+    post:
+      tags: [Projects]
+      summary: Create a new project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '201':
+          description: Created project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+    put:
+      tags: [Projects]
+      summary: Update a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '200':
+          description: Updated project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+  /projects/{id}:
+    delete:
+      tags: [Projects]
+      summary: Delete a project
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '204':
+          description: Project deleted
+
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        completed:
+          type: boolean
+        project:
+          type: integer
+          nullable: true
+        task:
+          type: string
+          nullable: true
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        project:
+          type: integer
+          nullable: true
+        children:
+          type: array
+          items:
+            type: integer
+        completed:
+          type: boolean
+        archived:
+          type: boolean
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
