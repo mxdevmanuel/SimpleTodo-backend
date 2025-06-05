@@ -6,7 +6,6 @@ const createProjectSchema = yup.object({
 });
 
 const editProjectSchema = yup.object({
-    id: yup.number().required(),
     name: yup.string().min(1).max(100)
 });
 

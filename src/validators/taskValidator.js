@@ -10,7 +10,6 @@ const createTaskSchema = yup.object({
 });
 
 const editTaskSchema = yup.object({
-  id: yup.number().required(),
   title: yup.string().min(1).max(200),
   description: yup.string().max(1000),
   project: yup.number().nullable(),

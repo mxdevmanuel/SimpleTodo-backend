@@ -6,6 +6,7 @@ info:
 
 servers:
   - url: http://localhost:3000
+  - url: https://manuelmorales-todo-6414c0aea566.herokuapp.com/
 
 tags:
   - name: Todos

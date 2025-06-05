@@ -8,7 +8,6 @@ const createTodoSchema = yup.object({
 });
 
 const editTodoSchema = yup.object({
-  id: yup.number().required(),
   title: yup.string().min(1).max(200),
   completed: yup.boolean().default(false),
   task: yup.number().nullable()
