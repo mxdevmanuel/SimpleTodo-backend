@@ -1,6 +1,8 @@
-const parse = require("pg-connection-string").parse;
+import parse from "pg-connection-string";
+import dotenv from 'dotenv';
+import knex from 'knex';
 
-require('dotenv').config();
+dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 let connectionConfig = {};
@@ -23,7 +25,7 @@ const knexConfig = isProduction
       useNullAsDefault: true,
     };
 
-const db = require('knex')(knexConfig);
+const db = knex(knexConfig);
 
 // Initialize the database and create tables if they don't exist
 db.schema.hasTable('project').then(exists => {
@@ -63,4 +65,4 @@ db.schema.hasTable('todo').then(exists => {
 }
 );
 
-module.exports = db;
+export default db;

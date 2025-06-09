@@ -1,5 +1,4 @@
-// Task validator using yup
-const yup = require('yup');
+import yup from 'yup';
 
 const createTaskSchema = yup.object({
   title: yup.string().required().min(1).max(200),
@@ -17,4 +16,4 @@ const editTaskSchema = yup.object({
   archived: yup.boolean().default(false)
 });
 
-module.exports = { createTaskSchema, editTaskSchema };
+export { createTaskSchema, editTaskSchema };

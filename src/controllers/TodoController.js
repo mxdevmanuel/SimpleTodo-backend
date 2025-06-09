@@ -1,4 +1,4 @@
-const TodoService = require('../services/TodoService');
+import TodoService from '../services/TodoService.js';
 
 class TodoController {
     constructor() {
@@ -27,4 +27,5 @@ class TodoController {
         res.status(204).send();
     }
 }
-module.exports = TodoController;
+
+export default TodoController;

@@ -1,6 +1,6 @@
-const express = require('express');
-const TaskController = require('../controllers/TaskController');
-const { createTaskSchema, editTaskSchema } = require('../validators/taskValidator');
+import express from 'express';
+import TaskController from '../controllers/TaskController.js';
+import { createTaskSchema, editTaskSchema } from '../validators/taskValidator.js';
 
 const taskController = new TaskController();
 const router = express.Router();
@@ -23,4 +23,4 @@ router.post('/', validateCreateTask, (req, res) => taskController.create(req, re
 router.put('/:id', validateEditTask, (req, res) => taskController.update(req, res));
 router.delete('/:id', (req, res) => taskController.remove(req, res));
 
-module.exports = router;
+export default router;

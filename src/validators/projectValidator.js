@@ -1,5 +1,4 @@
-// Project validator using yup
-const yup = require('yup');
+import yup from 'yup';
 
 const createProjectSchema = yup.object({
     name: yup.string().required().min(1).max(100)
@@ -9,4 +8,4 @@ const editProjectSchema = yup.object({
     name: yup.string().min(1).max(100)
 });
 
-module.exports = { createProjectSchema, editProjectSchema };
+export { createProjectSchema, editProjectSchema };

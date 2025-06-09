@@ -1,5 +1,5 @@
-const Task = require('../models/Task');
-const TaskRepository = require('../repositories/TaskRepository');
+import Task from '../models/Task.js';
+import TaskRepository from '../repositories/TaskRepository.js';
 
 class TaskService {
     constructor() {
@@ -33,4 +33,4 @@ class TaskService {
     }
 }
 
-module.exports = TaskService;
+export default TaskService;

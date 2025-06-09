@@ -9,4 +9,4 @@ class Task {
         this.archived = archived ?? false;
     }
 }
-module.exports = Task;
+export default Task;

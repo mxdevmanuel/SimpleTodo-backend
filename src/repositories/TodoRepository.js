@@ -1,5 +1,5 @@
-const db = require('../db/knex');
-const assert = require('assert');
+import db from '../db/knex.js';
+import assert from 'assert';
 
 class TodoRepository {
     constructor() {
@@ -32,4 +32,4 @@ class TodoRepository {
         return db(this.table).where({ id }).del();
     }
 }
-module.exports = TodoRepository;
+export default TodoRepository;

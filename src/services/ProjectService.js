@@ -1,5 +1,5 @@
-const Project = require('../models/Project');
-const ProjectRepository = require('../repositories/ProjectRepository');
+import Project from '../models/Project.js';
+import ProjectRepository from '../repositories/ProjectRepository.js';
 
 class ProjectService {
     constructor() {
@@ -26,4 +26,4 @@ class ProjectService {
     }
 }
 
-module.exports = ProjectService;
+export default ProjectService;

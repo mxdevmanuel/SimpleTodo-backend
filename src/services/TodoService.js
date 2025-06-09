@@ -1,5 +1,5 @@
-const Todo = require('../models/Todo');
-const TodoRepository = require('../repositories/TodoRepository');
+import Todo from '../models/Todo.js';
+import TodoRepository from '../repositories/TodoRepository.js';
 
 class TodoService {
     constructor() {
@@ -27,4 +27,4 @@ class TodoService {
         await this.repository.remove(id);
     }
 }
-module.exports = TodoService;
+export default TodoService;

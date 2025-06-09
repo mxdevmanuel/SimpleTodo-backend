@@ -1,12 +1,13 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const todoRoutes = require('./routes/todoRoutes');
-const taskRoutes = require('./routes/taskRoutes');
-const projectRoutes = require('./routes/projectRoutes');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import todoRoutes from './routes/todoRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
+import projectRoutes from './routes/projectRoutes.js';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,10 @@ app.use(cors());
 
 // Set up Morgan logger - 'dev' format is concise and colorful
 app.use(morgan('dev'));
+
+// Polyfill for __filename and __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load OpenAPI YAML
 const swaggerDocument = YAML.load(path.join(__dirname, 'openapi.yaml'));

@@ -6,4 +6,4 @@ class Todo {
         this.task = task ?? null;
     }
 }
-module.exports = Todo;
+export default Todo;

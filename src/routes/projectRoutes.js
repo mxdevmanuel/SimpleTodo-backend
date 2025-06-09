@@ -1,6 +1,6 @@
-const express = require('express');
-const ProjectController = require('../controllers/ProjectController');
-const { createProjectSchema, editProjectSchema } = require('../validators/projectValidator');
+import express from 'express';
+import ProjectController from '../controllers/ProjectController.js';
+import { createProjectSchema, editProjectSchema } from '../validators/projectValidator.js';
 
 const projectController = new ProjectController();
 const router = express.Router();
@@ -23,4 +23,4 @@ router.post('/', validateCreateProject, (req, res) => projectController.create(r
 router.put('/:id', validateEditProject, (req, res) => projectController.update(req, res));
 router.delete('/:id', (req, res) => projectController.remove(req, res));
 
-module.exports = router;
+export default router;

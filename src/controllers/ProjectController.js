@@ -1,4 +1,4 @@
-const ProjectService = require('../services/ProjectService');
+import ProjectService from '../services/ProjectService.js';
 
 class ProjectController {
     constructor() {
@@ -27,4 +27,4 @@ class ProjectController {
     }
 }
 
-module.exports = ProjectController;
+export default ProjectController;

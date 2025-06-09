@@ -1,5 +1,5 @@
-const db = require('../db/knex');
-const assert = require('assert');
+import db from '../db/knex.js';
+import assert from 'assert';
 
 class ProjectRepository {
     constructor() {
@@ -25,4 +25,4 @@ class ProjectRepository {
     }
 }
 
-module.exports = ProjectRepository;
+export default ProjectRepository;

@@ -1,6 +1,6 @@
-const express = require('express');
-const TodoController = require('../controllers/TodoController');
-const { createTodoSchema, editTodoSchema } = require('../validators/todoValidator');
+import express from 'express';
+import TodoController from '../controllers/TodoController.js';
+import { createTodoSchema, editTodoSchema } from '../validators/todoValidator.js';
 const router = express.Router();
 const todoController = new TodoController();
 
@@ -22,4 +22,4 @@ router.post('/', validateCreateTodo, (req, res) => todoController.create(req, re
 router.put('/:id', validateEditTodo, (req, res) => todoController.update(req, res));
 router.delete('/:id', (req, res) => todoController.remove(req, res));
 
-module.exports = router;
+export default router;

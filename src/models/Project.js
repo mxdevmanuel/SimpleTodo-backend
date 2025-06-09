@@ -4,4 +4,4 @@ class Project {
         this.name = name;
     }
 }
-module.exports = Project;
+export default Project;

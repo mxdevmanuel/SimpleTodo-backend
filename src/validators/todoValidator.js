@@ -1,5 +1,4 @@
-// Todo validator using yup
-const yup = require('yup');
+import yup from 'yup';
 
 const createTodoSchema = yup.object({
   title: yup.string().required().min(1).max(200),
@@ -13,4 +12,4 @@ const editTodoSchema = yup.object({
   task: yup.number().nullable()
 });
 
-module.exports = { createTodoSchema, editTodoSchema };
+export { createTodoSchema, editTodoSchema };
