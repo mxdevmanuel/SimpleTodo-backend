@@ -2,8 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "debug": "nodemon --inspect src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js"
   },
   "keywords": [],
   "author": "",
@@ -11,7 +16,6 @@
   "description": "",
   "dependencies": {
     "better-sqlite3": "^11.10.0",
-    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
@@ -23,5 +27,8 @@
     "swagger-ui-express": "^5.0.1",
     "yamljs": "^0.3.0",
     "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.28.0"
   }
 }

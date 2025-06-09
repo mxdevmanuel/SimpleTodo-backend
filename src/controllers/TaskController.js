@@ -22,7 +22,8 @@ class TaskController {
     }
 
     async update(req, res) {
-        const task = await this.service.update(req.body);
+        const { id } = req.params;
+        const task = await this.service.update({ id, ...req.body });
         res.json(task);
     }
 

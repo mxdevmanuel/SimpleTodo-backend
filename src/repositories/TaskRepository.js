@@ -27,13 +27,14 @@ class TaskRepository {
 
     async update(task) {
         assert(task.id);
-        return db(this.table).where({ id: task.id }).update({
-            title: task.title,
-            description: task.description,
-            project: task.project,
-            completed: task.completed,
-            archived: task.archived
-        });
+        return db(this.table)
+            .returning(['id', 'project']).where({ id: task.id }).update({
+                title: task.title,
+                description: task.description,
+                project: task.project,
+                completed: task.completed,
+                archived: task.archived
+            });
     }
 
     async remove(id) {
